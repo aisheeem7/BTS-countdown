@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 15%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+    --primary: 352 85% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 352 85% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 352 85% 58%;
+    --radius: 0.75rem;
+    --bts-red: 352 85% 58%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; font-family: 'Inter', sans-serif; }
+}
+
+@layer components {
+  .text-bts-red { color: hsl(var(--bts-red)); }
+  .album-card { @apply relative overflow-hidden rounded-xl bg-card border border-border/50; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .album-card:hover { @apply border-primary/50; transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px hsl(var(--bts-red) / 0.15); }
+  .countdown-digit { background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%); box-shadow: 0 4px 20px hsl(var(--bts-red) / 0.1); }
+  .intro-text { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--bts-red)); }
+}
+
+@layer utilities {
+  @keyframes slide-infinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes pulse-glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  .animate-slide-infinite { animation: slide-infinite 30s linear infinite; }
+  .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+  .infinite-scroll-container { animation: slide-infinite 40s linear infinite; }
+}
